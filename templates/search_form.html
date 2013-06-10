@@ -4,6 +4,13 @@
     <title>Search</title>
 </head>
 <body>
+    {% if errors %}
+        {% for error in errors %}
+        <ul>
+            <li style = "color:red">{{ error }}</li>
+        </ul>
+        {% endfor %}
+    {% endif %}
     <form action="/search/" method="get">
         <input type="text" name="q">
         <input type="submit" value="Search">
