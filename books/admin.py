@@ -6,7 +6,7 @@ class AuthorAdmin(admin.ModelAdmin):
     search_fields = ('first_name','last_name')
 
 class BookAdmin(admin.ModelAdmin):
-    list_display = ('title', 'publisher', 'publication_date')
+    list_display = ('title', 'publisher', 'publication_date','num_pages')
     list_filter = ('publication_date',)
     date_hierarchy = 'publication_date'
 

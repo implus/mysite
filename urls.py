@@ -1,6 +1,8 @@
 from django.conf.urls import *
 from views import hello, current_datetime, hours_ahead,display_meta
 from django.contrib import admin
+from books.views import PublisherListView
+from books.models import Publisher,Book
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -18,4 +20,8 @@ urlpatterns += patterns('books.views',
 urlpatterns += patterns('contact.views',
     (r'^contact/$','contact'),
     (r'^contact/thanks/$','thanks'),
+)
+
+urlpatterns += patterns('',
+    url(r'^publishers/$', PublisherListView.as_view(), name='article-list'),
 )

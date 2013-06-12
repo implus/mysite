@@ -2,7 +2,9 @@
 from django.shortcuts import render_to_response
 from django.http import HttpResponse
 from books.models import Book
-
+from books.models import Publisher
+from django.views.generic import ListView
+from django.utils import timezone
 
 def search(request):
     errors = []
@@ -19,3 +21,10 @@ def search(request):
         #return HttpResponse('Please submit a search term.')
     return render_to_response('search_form.html',{'errors': errors})
 
+class PublisherListView(ListView):
+    model = Publisher
+    def get_context_data(self, **kwargs):
+        context = super(PublisherListView,self).get_context_data(**kwargs)
+        #context['template_name']= 'templates/publisher_list.html'
+        context['now'] = timezone.now()
+        return context
